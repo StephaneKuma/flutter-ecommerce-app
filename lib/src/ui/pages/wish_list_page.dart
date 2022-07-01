@@ -1,6 +1,5 @@
+import 'package:ecommerce/src/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../widgets/widgets.dart';
 
 class WishListPage extends StatelessWidget {
   const WishListPage({Key? key}) : super(key: key);

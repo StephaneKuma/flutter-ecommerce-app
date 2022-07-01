@@ -10,6 +10,7 @@ part 'router.gr.dart';
   routes: <AutoRoute>[
   AutoRoute(page: HomePage, initial: true),
   AutoRoute(page: CatalogPage),
+  AutoRoute(page: ProductPage),
   AutoRoute(page: WishListPage),
   AutoRoute(page: CartPage),
   AutoRoute(page: UserPage),

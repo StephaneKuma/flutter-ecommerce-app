@@ -1,6 +1,5 @@
+import 'package:ecommerce/src/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../widgets/widgets.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({Key? key}) : super(key: key);

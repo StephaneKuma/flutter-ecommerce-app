@@ -27,6 +27,12 @@ class _$AppRouter extends RootStackRouter {
           routeData: routeData,
           child: CatalogPage(key: args.key, category: args.category));
     },
+    ProductRoute.name: (routeData) {
+      final args = routeData.argsAs<ProductRouteArgs>();
+      return MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: ProductPage(key: args.key, product: args.product));
+    },
     WishListRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const WishListPage());
@@ -45,6 +51,7 @@ class _$AppRouter extends RootStackRouter {
   List<RouteConfig> get routes => [
         RouteConfig(HomeRoute.name, path: '/'),
         RouteConfig(CatalogRoute.name, path: '/catalog-page'),
+        RouteConfig(ProductRoute.name, path: '/product-page'),
         RouteConfig(WishListRoute.name, path: '/wish-list-page'),
         RouteConfig(CartRoute.name, path: '/cart-page'),
         RouteConfig(UserRoute.name, path: '/user-page')
@@ -80,6 +87,30 @@ class CatalogRouteArgs {
   @override
   String toString() {
     return 'CatalogRouteArgs{key: $key, category: $category}';
+  }
+}
+
+/// generated route for
+/// [ProductPage]
+class ProductRoute extends PageRouteInfo<ProductRouteArgs> {
+  ProductRoute({Key? key, required Product product})
+      : super(ProductRoute.name,
+            path: '/product-page',
+            args: ProductRouteArgs(key: key, product: product));
+
+  static const String name = 'ProductRoute';
+}
+
+class ProductRouteArgs {
+  const ProductRouteArgs({this.key, required this.product});
+
+  final Key? key;
+
+  final Product product;
+
+  @override
+  String toString() {
+    return 'ProductRouteArgs{key: $key, product: $product}';
   }
 }
 

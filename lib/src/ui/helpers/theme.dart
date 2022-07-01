@@ -39,13 +39,13 @@ TextTheme textTheme() => const TextTheme(
         fontWeight: FontWeight.normal,
       ),
       bodyText1: TextStyle(
-        color: Colors.blue,
+        color: Colors.black,
         fontSize: 12,
         fontFamily: 'Avenir',
         fontWeight: FontWeight.normal,
       ),
       bodyText2: TextStyle(
-          color: Colors.blue,
+          color: Colors.black,
           fontSize: 10,
           fontFamily: 'Avenir',
           fontWeight: FontWeight.normal),

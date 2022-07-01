@@ -1,7 +1,6 @@
 import 'package:ecommerce/src/models/models.dart';
+import 'package:ecommerce/src/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../widgets/widgets.dart';
 
 class CatalogPage extends StatelessWidget {
   const CatalogPage({

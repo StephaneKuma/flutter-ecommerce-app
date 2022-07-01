@@ -1,8 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce/src/models/models.dart';
+import 'package:ecommerce/src/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-
-import '../widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,8 +22,8 @@ class HomePage extends StatelessWidget {
                 autoPlay: true,
               ),
               items: Category.demoList
-                  .map<HeroCarouselCard>(
-                      (Category category) => HeroCarouselCard(category: category))
+                  .map<HeroCarouselCard>((Category category) =>
+                      HeroCarouselCard(category: category))
                   .toList(),
             ),
             const SectionTitle(title: 'RECOMMENDED'),
