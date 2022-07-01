@@ -1,3 +1,4 @@
+import 'package:ecommerce/src/ui/helpers/theme.dart';
 import 'package:flutter/material.dart';
 
 import 'src/app/router/router.dart';
@@ -9,15 +10,12 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     final router = AppRouter();
 
     return MaterialApp.router(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: theme(),
       debugShowCheckedModeBanner: false,
       routerDelegate: router.delegate(),
       routeInformationParser: router.defaultRouteParser(),
