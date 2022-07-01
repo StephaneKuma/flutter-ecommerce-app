@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:ecommerce/src/models/models.dart';
 import 'package:ecommerce/src/ui/pages/pages.dart';
 import 'package:flutter/material.dart';
 

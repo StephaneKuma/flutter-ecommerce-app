@@ -5,16 +5,18 @@ class ProductCard extends StatelessWidget {
   const ProductCard({
     Key? key,
     required this.product,
+    this.widthFactor = 2.5,
   }) : super(key: key);
 
   final Product product;
+  final double widthFactor;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
         SizedBox(
-          width: MediaQuery.of(context).size.width / 2.5,
+          width: MediaQuery.of(context).size.width / widthFactor,
           height: 150.0,
           child: Image.network(
             product.picture,
@@ -24,7 +26,7 @@ class ProductCard extends StatelessWidget {
         Positioned(
           top: 60.0,
           child: Container(
-            width: MediaQuery.of(context).size.width / 2.5,
+            width: MediaQuery.of(context).size.width / widthFactor,
             height: 80.0,
             decoration: BoxDecoration(
               color: Colors.blue.withAlpha(50),
@@ -35,7 +37,7 @@ class ProductCard extends StatelessWidget {
           top: 65.0,
           left: 5.0,
           child: Container(
-            width: MediaQuery.of(context).size.width / 2.5 - 10,
+            width: MediaQuery.of(context).size.width / widthFactor - 10,
             height: 70.0,
             decoration: const BoxDecoration(
               color: Colors.blue,

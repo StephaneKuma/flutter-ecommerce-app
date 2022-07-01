@@ -22,8 +22,10 @@ class _$AppRouter extends RootStackRouter {
           routeData: routeData, child: const HomePage());
     },
     CatalogRoute.name: (routeData) {
+      final args = routeData.argsAs<CatalogRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const CatalogPage());
+          routeData: routeData,
+          child: CatalogPage(key: args.key, category: args.category));
     },
     WishListRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
@@ -59,10 +61,26 @@ class HomeRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [CatalogPage]
-class CatalogRoute extends PageRouteInfo<void> {
-  const CatalogRoute() : super(CatalogRoute.name, path: '/catalog-page');
+class CatalogRoute extends PageRouteInfo<CatalogRouteArgs> {
+  CatalogRoute({Key? key, required Category category})
+      : super(CatalogRoute.name,
+            path: '/catalog-page',
+            args: CatalogRouteArgs(key: key, category: category));
 
   static const String name = 'CatalogRoute';
+}
+
+class CatalogRouteArgs {
+  const CatalogRouteArgs({this.key, required this.category});
+
+  final Key? key;
+
+  final Category category;
+
+  @override
+  String toString() {
+    return 'CatalogRouteArgs{key: $key, category: $category}';
+  }
 }
 
 /// generated route for
