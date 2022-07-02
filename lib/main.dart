@@ -1,5 +1,7 @@
+import 'package:ecommerce/src/services/blocs/wish_list/wish_list_bloc.dart';
 import 'package:ecommerce/src/ui/helpers/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'src/app/router/router.dart';
 
@@ -14,11 +16,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final router = AppRouter();
 
-    return MaterialApp.router(
-      theme: theme(),
-      debugShowCheckedModeBanner: false,
-      routerDelegate: router.delegate(),
-      routeInformationParser: router.defaultRouteParser(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => WishListBloc()..add(StartWishList())),
+      ],
+      child: MaterialApp.router(
+        theme: theme(),
+        debugShowCheckedModeBanner: false,
+        routerDelegate: router.delegate(),
+        routeInformationParser: router.defaultRouteParser(),
+      ),
     );
   }
 }

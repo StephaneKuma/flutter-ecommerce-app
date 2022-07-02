@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:ecommerce/src/app/router/router.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -31,7 +33,9 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       iconTheme: const IconThemeData(color: Colors.blue),
       actions: <Widget>[
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            AutoRouter.of(context).push(const WishListRoute());
+          },
           icon: const Icon(Icons.favorite),
         )
       ],
