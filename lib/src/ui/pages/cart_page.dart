@@ -1,3 +1,6 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:ecommerce/src/app/router/router.dart';
+import 'package:ecommerce/src/models/models.dart';
 import 'package:ecommerce/src/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -6,9 +9,154 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(title: 'Cart'),
-      bottomNavigationBar: CustomBottomAppBar(),
+    return Scaffold(
+      appBar: const CustomAppBar(title: 'Cart'),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.blue,
+        child: SizedBox(
+          height: 60.0,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.white),
+                onPressed: () {},
+                child: Text(
+                  "GO TO CHECKOUT",
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20.0,
+          vertical: 10.0,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      'Add \$20.0 for free delivery',
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                    ElevatedButton(
+                      onPressed: () =>
+                          AutoRouter.of(context).push(const HomeRoute()),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        shape: const RoundedRectangleBorder(),
+                        elevation: 0,
+                      ),
+                      child: Text(
+                        'Add More Items',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline5!
+                            .copyWith(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10.0),
+                CartProductCard(
+                  product: Product.demoList[0],
+                ),
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                const Divider(thickness: 2.0),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 40.0,
+                    vertical: 10.0,
+                  ),
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            'SUBTOTAL',
+                            style: Theme.of(context).textTheme.headline5,
+                          ),
+                          Text(
+                            '\$5.98',
+                            style: Theme.of(context).textTheme.headline5,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            'DELIVERY FEE',
+                            style: Theme.of(context).textTheme.headline5,
+                          ),
+                          Text(
+                            '\$2.90',
+                            style: Theme.of(context).textTheme.headline5,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Stack(
+                  children: <Widget>[
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 60.0,
+                      decoration: BoxDecoration(
+                        color: Colors.blue.withAlpha(50),
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 50.0,
+                      margin: const EdgeInsets.all(5.0),
+                      decoration: const BoxDecoration(
+                        color: Colors.blue,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              'TOTAL',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline5!
+                                  .copyWith(color: Colors.white),
+                            ),
+                            Text(
+                              '\$12.90',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline5!
+                                  .copyWith(color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
