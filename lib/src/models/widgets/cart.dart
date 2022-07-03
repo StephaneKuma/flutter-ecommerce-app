@@ -9,6 +9,24 @@ class Cart extends Equatable {
   @override
   List<Object?> get props => [products];
 
+  Map<Product, int> productQuantity(List<Product> products) {
+    var quantity = <Product, int>{};
+
+    for (var product in products) {
+      int qty = quantity[product]!;
+
+      if (!quantity.containsKey(product)) {
+        qty = 1;
+      } else {
+        qty += 1;
+      }
+
+      quantity[product] = qty;
+    }
+
+    return quantity;
+  }
+
   double get subTotal =>
       products.fold(0, (total, current) => total + current.price);
 

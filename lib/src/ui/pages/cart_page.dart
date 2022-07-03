@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:ecommerce/src/app/router/router.dart';
-import 'package:ecommerce/src/models/models.dart';
 import 'package:ecommerce/src/services/blocs/cart/cart_bloc.dart';
 import 'package:ecommerce/src/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -81,9 +80,19 @@ class CartPage extends StatelessWidget {
                       SizedBox(
                         height: 400.0,
                         child: ListView.builder(
-                          itemCount: state.cart.products.length,
+                          itemCount: state.cart
+                              .productQuantity(state.cart.products)
+                              .keys
+                              .length,
                           itemBuilder: (context, index) => CartProductCard(
-                            product: state.cart.products[index],
+                            product: state.cart
+                                .productQuantity(state.cart.products)
+                                .keys
+                                .elementAt(index),
+                            quantity: state.cart
+                                .productQuantity(state.cart.products)
+                                .values
+                                .elementAt(index),
                           ),
                         ),
                       ),
