@@ -8,7 +8,8 @@ part 'router.gr.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-  AutoRoute(page: HomePage, initial: true),
+  AutoRoute(page: SplashPage, initial: true),
+  AutoRoute(page: HomePage),
   AutoRoute(page: CatalogPage),
   AutoRoute(page: ProductPage),
   AutoRoute(page: WishListPage),
