@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "698081673495",
+    "project_id": "stk-shop-596dd",
+    "storage_bucket": "stk-shop-596dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698081673495:android:ea70e9dff919203ab07752",
+        "android_client_info": {
+          "package_name": "tech.stkservices.ecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "698081673495-2fvm8l8e91re8k9ug5n8gfbefc2nktpn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARx_IunmYXnCtGwF8S6keKyKiUXuJxFls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "698081673495-2fvm8l8e91re8k9ug5n8gfbefc2nktpn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

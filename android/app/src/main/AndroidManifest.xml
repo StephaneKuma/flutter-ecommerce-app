@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tech.stkservices.ecommerce">
    <application
-        android:label="STK SHOP"
+        android:label="STK Shop"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
