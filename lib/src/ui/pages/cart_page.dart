@@ -48,140 +48,151 @@ class CartPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            state.cart.freeDeliveryString,
-                            style: Theme.of(context).textTheme.headline5,
-                          ),
-                          ElevatedButton(
-                            onPressed: () => AutoRouter.of(context).push(
-                              const HomeRoute(),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.blue,
-                              shape: const RoundedRectangleBorder(),
-                              elevation: 0,
-                            ),
-                            child: Text(
-                              'Add More Items',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline5!
-                                  .copyWith(color: Colors.white),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 10.0),
-                      SizedBox(
-                        height: 400.0,
-                        child: ListView.builder(
-                          itemCount: state.cart
-                              .productQuantity(state.cart.products)
-                              .keys
-                              .length,
-                          itemBuilder: (context, index) => CartProductCard(
-                            product: state.cart
-                                .productQuantity(state.cart.products)
-                                .keys
-                                .elementAt(index),
-                            quantity: state.cart
-                                .productQuantity(state.cart.products)
-                                .values
-                                .elementAt(index),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: <Widget>[
-                      const Divider(thickness: 2.0),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 40.0,
-                          vertical: 10.0,
-                        ),
-                        child: Column(
+                  Expanded(
+                    flex: 3,
+                    child: Column(
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  'SUBTOTAL',
-                                  style: Theme.of(context).textTheme.headline5,
-                                ),
-                                Text(
-                                  '\$${state.cart.subTotalString}',
-                                  style: Theme.of(context).textTheme.headline5,
-                                ),
-                              ],
+                            Flexible(
+                              child: Text(
+                                state.cart.freeDeliveryString,
+                                style: Theme.of(context).textTheme.headline5,
+                              ),
                             ),
-                            const SizedBox(height: 10.0),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(
-                                  'DELIVERY FEE',
-                                  style: Theme.of(context).textTheme.headline5,
-                                ),
-                                Text(
-                                  '\$${state.cart.deliveryFeeString}',
-                                  style: Theme.of(context).textTheme.headline5,
-                                ),
-                              ],
+                            ElevatedButton(
+                              onPressed: () => AutoRouter.of(context).push(
+                                const HomeRoute(),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.blue,
+                                shape: const RoundedRectangleBorder(),
+                                elevation: 0,
+                              ),
+                              child: Text(
+                                'Add More',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline5!
+                                    .copyWith(color: Colors.white),
+                              ),
                             ),
                           ],
                         ),
-                      ),
-                      Stack(
-                        children: <Widget>[
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 60.0,
-                            decoration: BoxDecoration(
-                              color: Colors.blue.withAlpha(50),
+                        const SizedBox(height: 10.0),
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: state.cart
+                                .productQuantity(state.cart.products)
+                                .keys
+                                .length,
+                            itemBuilder: (context, index) => CartProductCard(
+                              product: state.cart
+                                  .productQuantity(state.cart.products)
+                                  .keys
+                                  .elementAt(index),
+                              quantity: state.cart
+                                  .productQuantity(state.cart.products)
+                                  .values
+                                  .elementAt(index),
                             ),
                           ),
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 50.0,
-                            margin: const EdgeInsets.all(5.0),
-                            decoration: const BoxDecoration(
-                              color: Colors.blue,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Column(
+                      children: <Widget>[
+                        const Divider(thickness: 2.0),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 40.0,
+                              vertical: 3.0,
                             ),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 30.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  Text(
-                                    'TOTAL',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline5!
-                                        .copyWith(color: Colors.white),
-                                  ),
-                                  Text(
-                                    '\$${state.cart.totalString}',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline5!
-                                        .copyWith(color: Colors.white),
-                                  ),
-                                ],
+                            child: Column(
+                              children: <Widget>[
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Text(
+                                      'SUBTOTAL',
+                                      style: Theme.of(context).textTheme.headline5,
+                                    ),
+                                    Text(
+                                      '\$${state.cart.subTotalString}',
+                                      style: Theme.of(context).textTheme.headline5,
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 6.0),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Text(
+                                      'DELIVERY FEE',
+                                      style: Theme.of(context).textTheme.headline5,
+                                    ),
+                                    Text(
+                                      '\$${state.cart.deliveryFeeString}',
+                                      style: Theme.of(context).textTheme.headline5,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Stack(
+                            children: <Widget>[
+                              Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: 50.0,
+                                decoration: BoxDecoration(
+                                  color: Colors.blue.withAlpha(50),
+                                ),
                               ),
-                            ),
+                              Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: 40.0,
+                                margin: const EdgeInsets.all(5.0),
+                                decoration: const BoxDecoration(
+                                  color: Colors.blue,
+                                ),
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 30.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Text(
+                                        'TOTAL',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline5!
+                                            .copyWith(color: Colors.white),
+                                      ),
+                                      Text(
+                                        '\$${state.cart.totalString}',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline5!
+                                            .copyWith(color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

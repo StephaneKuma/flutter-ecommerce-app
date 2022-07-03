@@ -51,12 +51,6 @@ class CartProductCard extends StatelessWidget {
                       context
                           .read<CartBloc>()
                           .add(AddProduct(product: product));
-
-                      SnackBar snackBar = const SnackBar(
-                        content: Text('Added to your cart'),
-                      );
-
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     },
                     icon: const Icon(Icons.add_circle),
                   );
@@ -64,7 +58,7 @@ class CartProductCard extends StatelessWidget {
               ),
               Text(
                 '$quantity',
-                style: Theme.of(context).textTheme.headline4,
+                style: Theme.of(context).textTheme.headline5,
               ),
               BlocBuilder<CartBloc, CartState>(
                 builder: (context, state) {
@@ -73,12 +67,6 @@ class CartProductCard extends StatelessWidget {
                       context
                           .read<CartBloc>()
                           .add(RemoveProduct(product: product));
-
-                      SnackBar snackBar = const SnackBar(
-                        content: Text('Removed from your cart'),
-                      );
-
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     },
                     icon: const Icon(Icons.remove_circle),
                   );
