@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'src/app/router/router.dart';
+import 'src/services/blocs/cart/cart_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => WishListBloc()..add(StartWishList())),
+        BlocProvider(create: (_) => CartBloc()..add(LoadCart())),
       ],
       child: MaterialApp.router(
         theme: theme(),

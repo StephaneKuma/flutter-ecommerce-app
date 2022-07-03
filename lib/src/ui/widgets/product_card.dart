@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:ecommerce/src/app/router/router.dart';
 import 'package:ecommerce/src/models/models.dart';
+import 'package:ecommerce/src/services/blocs/cart/cart_bloc.dart';
 import 'package:ecommerce/src/services/blocs/wish_list/wish_list_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -84,14 +85,41 @@ class ProductCard extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Expanded(
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.add_shopping_cart_outlined,
-                          color: Colors.white,
-                        ),
-                      ),
+                    BlocBuilder<CartBloc, CartState>(
+                      builder: (context, state) {
+                        if (state is CartLoading) {
+                          return const Center(
+                            child: CircularProgressIndicator.adaptive(),
+                          );
+                        }
+
+                        if (state is CartLoaded) {
+                          return Expanded(
+                            child: IconButton(
+                              onPressed: () {
+                                context
+                                    .read<CartBloc>()
+                                    .add(AddProduct(product: product));
+
+                                SnackBar snackBar = const SnackBar(
+                                  content: Text('Added to your cart'),
+                                );
+
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+                              },
+                              icon: const Icon(
+                                Icons.add_shopping_cart_outlined,
+                                color: Colors.white,
+                              ),
+                            ),
+                          );
+                        } else {
+                          return const Center(
+                            child: Text('Something went wrong'),
+                          );
+                        }
+                      },
                     ),
                     if (isWishList)
                       Expanded(

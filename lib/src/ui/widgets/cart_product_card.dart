@@ -1,5 +1,7 @@
 import 'package:ecommerce/src/models/models.dart';
+import 'package:ecommerce/src/services/blocs/cart/cart_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartProductCard extends StatelessWidget {
   const CartProductCard({
@@ -40,17 +42,45 @@ class CartProductCard extends StatelessWidget {
           const SizedBox(width: 10.0),
           Row(
             children: <Widget>[
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.add_circle),
+              BlocBuilder<CartBloc, CartState>(
+                builder: (context, state) {
+                  return IconButton(
+                    onPressed: () {
+                      context
+                          .read<CartBloc>()
+                          .add(AddProduct(product: product));
+
+                      SnackBar snackBar = const SnackBar(
+                        content: Text('Added to your cart'),
+                      );
+
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    },
+                    icon: const Icon(Icons.add_circle),
+                  );
+                },
               ),
               Text(
                 '1',
                 style: Theme.of(context).textTheme.headline5,
               ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.remove_circle),
+              BlocBuilder<CartBloc, CartState>(
+                builder: (context, state) {
+                  return IconButton(
+                    onPressed: () {
+                      context
+                          .read<CartBloc>()
+                          .add(RemoveProduct(product: product));
+
+                      SnackBar snackBar = const SnackBar(
+                        content: Text('Removed from your cart'),
+                      );
+
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    },
+                    icon: const Icon(Icons.remove_circle),
+                  );
+                },
               ),
             ],
           )
