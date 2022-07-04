@@ -9,12 +9,12 @@ class Category extends Equatable {
     required this.picture,
   });
 
-  factory Category.fromMap(Map<String, String> map) => Category(
+  factory Category.fromMap({required Map<String, dynamic> map}) => Category(
         name: map['name']!,
         picture: map['picture']!,
       );
 
-  Map<String, String> toMap() => {
+  Map<String, dynamic> toMap() => {
         'name': name,
         'picture': picture,
       };

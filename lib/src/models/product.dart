@@ -17,7 +17,7 @@ class Product extends Equatable {
     required this.isPopular,
   });
 
-  factory Product.fromMap(Map<String, dynamic> map) => Product(
+  factory Product.fromMap({required Map<String, dynamic> map}) => Product(
         name: map['name'],
         category: map['category'],
         picture: map['picture'],
