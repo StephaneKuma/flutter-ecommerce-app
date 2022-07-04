@@ -18,7 +18,11 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             BlocBuilder<CategoryBloc, CategoryState>(
               builder: (context, state) {
-                if (state is CategoryLoading) {}
+                if (state is CategoryLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator.adaptive(),
+                  );
+                }
 
                 if (state is CategoryLoaded) {
                   return CarouselSlider(

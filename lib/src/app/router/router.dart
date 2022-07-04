@@ -14,6 +14,7 @@ part 'router.gr.dart';
   AutoRoute(page: ProductPage),
   AutoRoute(page: WishListPage),
   AutoRoute(page: CartPage),
+  AutoRoute(page: CheckoutPage),
   AutoRoute(page: UserPage),
 ])
 class AppRouter extends _$AppRouter {}

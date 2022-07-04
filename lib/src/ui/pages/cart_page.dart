@@ -21,7 +21,9 @@ class CartPage extends StatelessWidget {
             children: <Widget>[
               ElevatedButton(
                 style: ElevatedButton.styleFrom(primary: Colors.white),
-                onPressed: () {},
+                onPressed: () {
+                  AutoRouter.of(context).push(const CheckoutRoute());
+                },
                 child: Text(
                   "GO TO CHECKOUT",
                   style: Theme.of(context).textTheme.headline3,
@@ -102,97 +104,9 @@ class CartPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Expanded(
+                  const Expanded(
                     flex: 1,
-                    child: Column(
-                      children: <Widget>[
-                        const Divider(thickness: 2.0),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 40.0,
-                              vertical: 3.0,
-                            ),
-                            child: Column(
-                              children: <Widget>[
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text(
-                                      'SUBTOTAL',
-                                      style: Theme.of(context).textTheme.headline5,
-                                    ),
-                                    Text(
-                                      '\$${state.cart.subTotalString}',
-                                      style: Theme.of(context).textTheme.headline5,
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 6.0),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text(
-                                      'DELIVERY FEE',
-                                      style: Theme.of(context).textTheme.headline5,
-                                    ),
-                                    Text(
-                                      '\$${state.cart.deliveryFeeString}',
-                                      style: Theme.of(context).textTheme.headline5,
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Stack(
-                            children: <Widget>[
-                              Container(
-                                width: MediaQuery.of(context).size.width,
-                                height: 50.0,
-                                decoration: BoxDecoration(
-                                  color: Colors.blue.withAlpha(50),
-                                ),
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width,
-                                height: 40.0,
-                                margin: const EdgeInsets.all(5.0),
-                                decoration: const BoxDecoration(
-                                  color: Colors.blue,
-                                ),
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 30.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: <Widget>[
-                                      Text(
-                                        'TOTAL',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline5!
-                                            .copyWith(color: Colors.white),
-                                      ),
-                                      Text(
-                                        '\$${state.cart.totalString}',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headline5!
-                                            .copyWith(color: Colors.white),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                    child: OrderSummary(),
                   ),
                 ],
               ),
