@@ -11,6 +11,7 @@ part 'checkout_event.dart';
 part 'checkout_state.dart';
 
 class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
+  final CartBloc _cartBloc;
   final CheckoutRepository _checkoutRepository;
   StreamSubscription? _cartSubscription;
   StreamSubscription? _checkoutSubscription;
@@ -18,7 +19,8 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
   CheckoutBloc({
     required CartBloc cartBloc,
     required CheckoutRepository checkoutRepository,
-  })  : _checkoutRepository = checkoutRepository,
+  })  : _cartBloc = cartBloc,
+        _checkoutRepository = checkoutRepository,
         super(cartBloc.state is CartLoaded
             ? CheckoutLoaded(
                 products: (cartBloc.state as CartLoaded).cart.products,
@@ -31,7 +33,7 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
     on<UpdateCheckout>(_onUpdateCheckout);
     on<ConfirmCheckout>(_onConfirmCheckout);
 
-    _cartSubscription = cartBloc.stream.listen((state) {
+    _cartSubscription = _cartBloc.stream.listen((state) {
       if (state is CartLoaded) {
         add(UpdateCheckout(cart: state.cart));
       }

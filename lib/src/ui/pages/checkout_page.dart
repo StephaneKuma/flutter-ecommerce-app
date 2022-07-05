@@ -98,10 +98,7 @@ class CheckoutPage extends StatelessWidget {
                         Center(
                           child: TextButton(
                             onPressed: () {
-                              // Navigator.pushNamed(
-                              //   context,
-                              //   '/payment-selection',
-                              // );
+                              // TODO: create payment method selection page
                             },
                             child: Text(
                               'SELECT A PAYMENT METHOD',

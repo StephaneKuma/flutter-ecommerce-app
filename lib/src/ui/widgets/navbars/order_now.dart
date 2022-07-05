@@ -35,7 +35,6 @@ class OrderNowNavBar extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline3,
                 ),
               );
-              // }
             } else {
               return const Center(child: Text('Something went wrong'));
             }
