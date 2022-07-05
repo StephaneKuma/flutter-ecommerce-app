@@ -1,12 +1,8 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce/src/app/router/router.dart';
 import 'package:ecommerce/src/models/models.dart';
-import 'package:ecommerce/src/services/blocs/cart/cart_bloc.dart';
-import 'package:ecommerce/src/services/blocs/wish_list/wish_list_bloc.dart';
 import 'package:ecommerce/src/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({
@@ -20,6 +16,10 @@ class ProductPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: product.name),
+      bottomNavigationBar: CustomBottomAppBar(
+        route: ProductRoute.name,
+        product: product,
+      ),
       body: ListView(
         children: <Widget>[
           CarouselSlider(
@@ -110,70 +110,6 @@ class ProductPage extends StatelessWidget {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.blue,
-        child: SizedBox(
-          height: 60.0,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.share,
-                  color: Colors.white,
-                ),
-              ),
-              BlocBuilder<WishListBloc, WishListState>(
-                builder: (context, state) {
-                  return IconButton(
-                    onPressed: () {
-                      // AutoRouter.of(context).push(const WishListRoute());
-                      context
-                          .read<WishListBloc>()
-                          .add(AddProductToWishList(product: product));
-
-                      SnackBar snackBar = const SnackBar(
-                        content: Text('Added to your wish list'),
-                      );
-
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    },
-                    icon: const Icon(
-                      Icons.favorite,
-                      color: Colors.white,
-                    ),
-                  );
-                },
-              ),
-              BlocBuilder<CartBloc, CartState>(
-                builder: (context, state) {
-                  return ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Colors.white),
-                    onPressed: () {
-                      context
-                          .read<CartBloc>()
-                          .add(AddProduct(product: product));
-
-                      SnackBar snackBar = const SnackBar(
-                        content: Text('Added to your cart'),
-                      );
-
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-
-                      AutoRouter.of(context).push(const CartRoute());
-                    },
-                    child: Text(
-                      "ADD TO CART",
-                      style: Theme.of(context).textTheme.headline3,
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

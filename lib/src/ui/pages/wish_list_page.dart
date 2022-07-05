@@ -1,3 +1,4 @@
+import 'package:ecommerce/src/app/router/router.dart';
 import 'package:ecommerce/src/services/blocs/wish_list/wish_list_bloc.dart';
 import 'package:ecommerce/src/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +48,9 @@ class WishListPage extends StatelessWidget {
           }
         },
       ),
-      bottomNavigationBar: const CustomBottomAppBar(),
+      bottomNavigationBar: const CustomBottomAppBar(
+        route: WishListRoute.name,
+      ),
     );
   }
 }

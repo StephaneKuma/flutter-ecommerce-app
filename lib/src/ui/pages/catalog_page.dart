@@ -1,3 +1,4 @@
+import 'package:ecommerce/src/app/router/router.dart';
 import 'package:ecommerce/src/models/models.dart';
 import 'package:ecommerce/src/services/blocs/product/product_bloc.dart';
 import 'package:ecommerce/src/ui/widgets/widgets.dart';
@@ -16,6 +17,7 @@ class CatalogPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: category.name),
+      bottomNavigationBar: const CustomBottomAppBar(route: CatalogRoute.name,),
       body: BlocBuilder<ProductBloc, ProductState>(
         builder: (context, state) {
           if (state is ProductLoading) {
@@ -52,7 +54,6 @@ class CatalogPage extends StatelessWidget {
           }
         },
       ),
-      bottomNavigationBar: const CustomBottomAppBar(),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:ecommerce/src/app/router/router.dart';
 import 'package:ecommerce/src/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +9,9 @@ class UserPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: CustomAppBar(title: 'User'),
-      bottomNavigationBar: CustomBottomAppBar(),
+      bottomNavigationBar: CustomBottomAppBar(
+        route: HomeRoute.name,
+      ),
     );
   }
 }

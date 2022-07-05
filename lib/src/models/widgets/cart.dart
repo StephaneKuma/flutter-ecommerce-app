@@ -10,6 +10,7 @@ class Cart extends Equatable {
   List<Object?> get props => [products];
 
   Map productQuantity(List<Product> products) {
+    // ignore: prefer_collection_literals
     var quantity = Map();
 
     for (var product in products) {
