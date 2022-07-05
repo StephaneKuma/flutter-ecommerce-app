@@ -16,7 +16,7 @@ TextTheme textTheme() => const TextTheme(
       ),
       headline2: TextStyle(
         color: Colors.blue,
-        fontSize: 24,
+        fontSize: 20,
         fontFamily: 'Avenir',
         fontWeight: FontWeight.bold,
       ),

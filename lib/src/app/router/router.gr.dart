@@ -49,6 +49,10 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const CheckoutPage());
     },
+    OrderConfirmationRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const OrderConfirmationPage());
+    },
     UserRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const UserPage());
@@ -64,6 +68,8 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(WishListRoute.name, path: '/wish-list-page'),
         RouteConfig(CartRoute.name, path: '/cart-page'),
         RouteConfig(CheckoutRoute.name, path: '/checkout-page'),
+        RouteConfig(OrderConfirmationRoute.name,
+            path: '/order-confirmation-page'),
         RouteConfig(UserRoute.name, path: '/user-page')
       ];
 }
@@ -154,6 +160,15 @@ class CheckoutRoute extends PageRouteInfo<void> {
   const CheckoutRoute() : super(CheckoutRoute.name, path: '/checkout-page');
 
   static const String name = 'CheckoutRoute';
+}
+
+/// generated route for
+/// [OrderConfirmationPage]
+class OrderConfirmationRoute extends PageRouteInfo<void> {
+  const OrderConfirmationRoute()
+      : super(OrderConfirmationRoute.name, path: '/order-confirmation-page');
+
+  static const String name = 'OrderConfirmationRoute';
 }
 
 /// generated route for

@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:ecommerce/src/app/router/router.dart';
 import 'package:ecommerce/src/services/blocs/blocs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,6 +30,8 @@ class OrderNowNavBar extends StatelessWidget {
                   context
                       .read<CheckoutBloc>()
                       .add(ConfirmCheckout(checkout: state.checkout));
+
+                  AutoRouter.of(context).push(const OrderConfirmationRoute());
                 },
                 style: ElevatedButton.styleFrom(primary: Colors.white),
                 child: Text(

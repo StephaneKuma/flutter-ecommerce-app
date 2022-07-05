@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:ecommerce/src/app/router/router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -20,16 +21,21 @@ class SplashPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          const Center(
+          Center(
             // child: Image(
             //   image: AssetImage('assets/images/logo.svg'),
             //   width: 125.0,
             //   height: 125.0,
             // ),
-            child: FlutterLogo(
-              size: 125.0,
-              textColor: Colors.blue
+            child: SvgPicture.asset(
+              'assets/images/logo.svg',
+              width: 125.0,
+              height: 125.0,
             ),
+            // child: FlutterLogo(
+            //   size: 125.0,
+            //   textColor: Colors.blue
+            // ),
           ),
           const SizedBox(height: 30.0),
           Container(

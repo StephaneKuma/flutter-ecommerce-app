@@ -41,6 +41,7 @@ flutter:
 
   assets:
     - assets/images/logo.svg
+    - assets/images/garlands.svg
 
   # fonts:
   #   - family: Schyler
